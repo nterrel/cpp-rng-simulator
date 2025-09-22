@@ -2,4 +2,27 @@
 *.o
 *.out
 *.exe
-hello
+rng
+
+
+# Other stuff
+.vscode/
+
+
+# Build artifacts
+build/
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.lib
+*.dll
+*.dylib
+*.pch
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
