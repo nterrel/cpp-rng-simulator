@@ -36,3 +36,9 @@ Hello, let's try some input/output!
 Enter a number: 42
 Random number generated (0-512): 123
 ```
+
+---
+
+## Next Steps
+
+- Change this from a simple random number generator to a framework for doing random tree algorithms, other random sampling approaches.

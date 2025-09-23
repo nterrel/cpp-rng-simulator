@@ -1,13 +1,5 @@
-# Ignore build files
-*.o
-*.out
-*.exe
+# File name for compiled binary (user dependent, just the name I use)
 rng
-
-
-# Other stuff
-.vscode/
-
 
 # Build artifacts
 build/
@@ -26,3 +18,6 @@ CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 compile_commands.json
+
+# Other stuff
+.vscode/
