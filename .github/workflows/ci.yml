@@ -4,7 +4,10 @@ on:
   pull_request: { branches: [ main ] }
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
     steps:
       - uses: actions/checkout@v4
       - name: Configure
@@ -13,3 +16,9 @@ jobs:
         run: cmake --build build --config Release -- -j 2
       - name: Test
         run: ctest --test-dir build --output-on-failure
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run clang-tidy
+        run: clang-tidy src/*.cpp -- -std=c++17

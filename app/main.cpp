@@ -1,40 +1,46 @@
 /*
- * Random Number Generator
- * This program takes an integer input from the user, uses it as a seed for the random number generator, 
- * and generates a random number within the range [0, 512].
+ * Advanced Random Number Generator
+ * This program takes user inputs for seed, range, and count, then generates a list of random numbers
+ * within the specified range. It also calculates and displays the mean of the generated numbers.
  * Author: Nick Terrel
  * Date: September 22, 2025
  */
 
 #include <iostream>
-#include <optional>
-#include <string>
-#include "rng/rng.hpp"
+#include "rng.hpp"
 
-static std::optional<long long> parse_seed_from_stdin() {
-    std::cout << "Enter an integer seed (or press Ctrl+D to cancel): ";
-    long long seed;
-    if (std::cin >> seed) return seed;
-    return std::nullopt;
-}
+using namespace std;
+using namespace rng;
 
-int main(int argc, char** argv) {
-    // CLI: ./random-number [seed] [lo hi]
-    long long seed = 0;
-    int lo = 0, hi = 512;
+int main() {
+    // Greet the user
+    cout << "Welcome to the Advanced Random Number Generator!" << endl;
 
-    if (argc >= 2) seed = std::stoll(argv[1]);
-    else {
-        auto s = parse_seed_from_stdin();
-        if (!s) { std::cerr << "No seed provided.\n"; return 1; }
-        seed = *s;
+    int seed, count, min, max;
+
+    // Get user input for seed
+    cout << "Enter a seed value: ";
+    cin >> seed;
+
+    // Get user input for range
+    cout << "Enter the minimum value: ";
+    cin >> min;
+    cout << "Enter the maximum value: ";
+    cin >> max;
+
+    // Get user input for the number of random numbers to generate
+    cout << "How many random numbers would you like to generate? ";
+    cin >> count;
+
+    Generator generator(seed);
+    auto randomNumbers = generator.uniform_ints(count, min, max);
+
+    // Display the generated numbers
+    cout << "\nGenerated Random Numbers:" << endl;
+    for (int num : randomNumbers) {
+        cout << num << " ";
     }
-    if (argc == 4) { lo = std::stoi(argv[2]); hi = std::stoi(argv[3]); }
+    cout << endl;
 
-    if (lo > hi) { std::cerr << "Error: lo must be <= hi.\n"; return 1; }
-
-    rng::Generator gen(static_cast<std::uint64_t>(seed));
-    int value = gen.uniform_int(lo, hi);
-    std::cout << "Random number generated (" << lo << "-" << hi << "): " << value << "\n";
     return 0;
 }

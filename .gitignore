@@ -4,20 +4,13 @@ rng
 # Build artifacts
 build/
 *.o
-*.obj
-*.exe
 *.out
-*.a
-*.lib
-*.dll
-*.dylib
-*.pch
+*.exe
 
-# CMake
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-compile_commands.json
-
-# Other stuff
+# IDE files
 .vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db

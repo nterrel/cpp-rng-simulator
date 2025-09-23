@@ -1,44 +1,85 @@
 # 🎲 Random Number Generator (C++)
 
-This is a simple C++ program that demonstrates **input/output**, **random number generation**, and **seeding**.  
-It asks the user for an integer, uses it as a seed for the random number generator, and then produces a random number in the range `[0, 512]`.
+This repository contains a C++ program that demonstrates advanced random number generation. It includes:
+
+- **Input/output handling**
+- **Random number generation**
+- **Unit tests**
 
 ---
 
 ## 📂 Project Structure
 
-- `main.cpp`: Source code for the program
+- `app/`: Contains the main application source code.
+- `src/`: Contains the implementation of the random number generator library.
+- `include/`: Contains the header files for the library.
+- `tests/`: Contains unit tests for the library.
+- `.github/workflows/`: Contains CI configuration files.
 
 ---
 
-## ⚙️ How to Compile and Run
+## ⚙️ Getting Started
 
-1. Open a terminal in this project folder.
-2. Compile the program:
+### Prerequisites
+
+- A C++17-compatible compiler (e.g., `clang++`, `g++`)
+- CMake (version 3.16 or higher)
+
+### Build and Run
+
+1. Clone the repository:
 
     ```bash
-    clang++ main.cpp -o rng
+    git clone https://github.com/nterrel/cpp-rng-simulator.git
+    cd cpp-rng-simulator
     ```
 
-   (You can also use `g++` if installed.)
-3. Run the program:
+2. Build the project:
 
     ```bash
-    ./rng
+    cmake -S . -B build
+    cmake --build build
+    ```
+
+3. Run the application:
+
+    ```bash
+    ./build/random-number
+    ```
+
+4. Run the tests:
+
+    ```bash
+    ctest --test-dir build --output-on-failure
     ```
 
 ---
 
-## 📝 Example Output
+## 🛠️ Contributing
 
-```plaintext
-Hello, let's try some input/output!
-Enter a number: 42
-Random number generated (0-512): 123
-```
+1. Fork the repository.
+2. Create a new branch for your feature:
+
+    ```bash
+    git checkout -b feature-name
+    ```
+
+3. Commit your changes:
+
+    ```bash
+    git commit -m 'Add new feature'
+    ```
+
+4. Push to your branch:
+
+    ```bash
+    git push origin feature-name
+    ```
+
+5. Open a pull request.
 
 ---
 
-## Next Steps
+## 📜 License
 
-- Change this from a simple random number generator to a framework for doing random tree algorithms, other random sampling approaches.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
